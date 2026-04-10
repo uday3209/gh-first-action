@@ -17,3 +17,24 @@ jobs:
             
             - name: Run Tests
               run: npm test
+    
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v3
+            
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with: 
+                node-version: '18'
+            
+            - name: Install Dependencies
+              run: npm ci
+            
+            - name: Build Project
+              run: npm run build
+            
+            - name: Deploy to Prod
+              run: echo "Deploying this to Prod .."
+                            
