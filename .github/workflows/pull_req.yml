@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: output event data
-        run: echo "$ {{ toJSON(github) }}"
+        run: echo "${{ toJSON(github) }}"
         
       - name: get code
         uses: actions/checkout@v3
