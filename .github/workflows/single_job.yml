@@ -1,0 +1,40 @@
+name: Deploy Project
+on:
+  push: 
+    branches:
+      - 'main'
+      - 'dev-*'
+      - 'feature/**'
+    
+    paths-ignore:
+      - '.github/workflows/*'
+  workflow_dispatch:
+jobs:
+    install-test-deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Code Checkout
+          uses: actions/checkout@v3
+
+        # Installing Dependencies
+        - name: Install Node
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18'
+            cache: 'npm'
+            cache-dependency-path: package-lock.json
+
+        - name: Install Dependencies
+          run: npm ci
+        
+        # Running Tests
+        - name: Run Tests
+          run: npm test
+    
+        # Build and Deploy  
+        - name: Build Project
+          run: npm run build
+        
+        - name: Deploy to Prod
+          run: echo "Deploying this to Prod .."
+                        
