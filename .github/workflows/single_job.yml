@@ -1,13 +1,13 @@
 name: install-test-deploy
 on:
-  push: 
-    branches:
-      - 'main'
-      - 'dev-*'
-      - 'feature/**'
+#   push: 
+#     branches:
+#       - 'main'
+#       - 'dev-*'
+#       - 'feature/**'
     
-    paths-ignore:
-      - '.github/workflows/*'
+#     paths-ignore:
+#       - '.github/workflows/*'
   workflow_dispatch:
 jobs:
     # Single job workflow...
