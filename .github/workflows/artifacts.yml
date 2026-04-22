@@ -47,7 +47,10 @@ jobs:
             - name: get build artifacts
               uses: actions/download-artifact@v8
               with:
-                name: dist-files  
+                name: dist-files
+            
+            - name: get filename
+              run: echo "${{ needs.build.outputs.script-file }}"
                 
             - name: deploy project
               run: echo "deploying.." 
